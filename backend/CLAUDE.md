@@ -48,6 +48,7 @@ HTTP Request
 ## Git / ブランチ運用
 
 - ブランチ戦略: `main`（本番）/ `develop`（統合）/ `feature/*`。`feature/*` は `develop` から切り、PR で `develop` へマージ。リリース時に `develop` → `main`。
+- `feature/*` は**必ず最新の `develop` から切る**（事前に `git switch develop && git pull` で最新化してからブランチ作成）。
 - `main` / `develop` へ直接コミットしない（必ず `feature/*` で作業）。
 - **コミット前に `make test`（Pint + Pest, カバレッジ `--min=80`）が通ることを確認する**。
 
