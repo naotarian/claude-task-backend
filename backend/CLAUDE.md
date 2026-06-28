@@ -45,6 +45,12 @@ HTTP Request
 - `readonly` プロパティでのコンストラクタ注入を使う（既存の UseCase / Service / Middleware を踏襲）。
 - enum はファーストクラスの PHP enum（`app/Enums/`）。FormRequest の `payload()` で文字列から enum に変換してから UseCase へ渡す。
 
+## Git / ブランチ運用
+
+- ブランチ戦略: `main`（本番）/ `develop`（統合）/ `feature/*`。`feature/*` は `develop` から切り、PR で `develop` へマージ。リリース時に `develop` → `main`。
+- `main` / `develop` へ直接コミットしない（必ず `feature/*` で作業）。
+- **コミット前に `make test`（Pint + Pest, カバレッジ `--min=80`）が通ることを確認する**。
+
 ## テスト
 
 - Pest 3 + PHPUnit 11。`make test` でカバレッジ `--min=80`（閾値は CI 相当で常時担保）。
