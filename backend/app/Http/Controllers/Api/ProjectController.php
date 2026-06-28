@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api;
 use App\Data\ProjectData;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Project\StoreProjectRequest;
+use App\Http\Requests\Project\UpdateProjectSettingsRequest;
 use App\Models\Organization;
 use App\Models\Project;
 use App\Repositories\Contracts\ProjectRepositoryInterface;
 use App\UseCases\Project\ArchiveProjectUseCase;
 use App\UseCases\Project\CreateProjectUseCase;
+use App\UseCases\Project\UpdateProjectSettingsUseCase;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Spatie\LaravelData\DataCollection;
@@ -55,7 +57,7 @@ class ProjectController extends Controller
         return ProjectData::fromModel($project, $project->memberRole($request->user()), withStatuses: true);
     }
 
-    public function updateSettings(\App\Http\Requests\Project\UpdateProjectSettingsRequest $request, Project $project, \App\UseCases\Project\UpdateProjectSettingsUseCase $useCase): JsonResponse
+    public function updateSettings(UpdateProjectSettingsRequest $request, Project $project, UpdateProjectSettingsUseCase $useCase): JsonResponse
     {
         $this->authorize('manage', $project);
 
