@@ -1,0 +1,7 @@
+.DS_Store
+*.log
+/.idea
+/.vscode
+
+# frontend は別リポジトリ（claude-task-frontend）として管理する
+/frontend
